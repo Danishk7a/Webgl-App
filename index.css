@@ -1,0 +1,142 @@
+*{
+
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+/* Extra Custom classes */
+
+.btn{
+    display: flex;
+    
+}
+
+
+
+header{
+   
+   
+    
+
+}
+
+.logo{
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+}
+nav{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 15vh;
+    
+}
+
+nav ul{
+    display: flex;
+}
+
+nav ul li{
+    list-style: none;
+}
+
+
+nav ul li a{
+ 
+    padding: 20px;
+    text-decoration: none;
+  
+    color: white;
+
+}
+
+.head{
+        height: 80vh;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      flex-direction: column; 
+
+}
+
+.head h1{
+
+    font-size: 72px;
+
+
+
+}
+
+
+
+/* main */
+
+/* section */
+
+.cards{
+
+    display: flex;
+    padding: 80px;
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+section{
+
+    width: 70%;
+    padding: 40px;
+}
+
+
+.secnaside{
+
+    display: flex;
+
+}
+
+aside{
+    /* border-left: 0.5px solid rgba(94, 94, 94, 0.5); */
+    margin-top:50px ;
+}
+
+form{
+    padding: 40px;
+    position: sticky;
+    top: 20px;
+
+}
+
+
+footer{
+
+    padding: 30px;
+    background-color: #f2f2f2;
+}
+ul{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul li{
+    list-style: none;
+}
+
+ul li a{
+    padding: 20px;
+    color: rgb(77, 77, 77);
+    text-decoration: none;
+}
+
+.copyri{
+
+    text-align: center;
+    color: rgb(77, 77, 77);
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Danish Khan</title>
+  
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="media_query.css">
+    <link rel="stylesheet" href="/Src/all.min.css">
+
+
+	<!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/Public/D.png">
+
+
+    <!-- fontawesoem -->
+    <script src="https://kit.fontawesome.com/993422caaf.js" crossorigin="anonymous"></script>
+
+
+    <!-- bootsrap -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+
+
+ 
+
+   
+</head>
+</head>
+
+<body>
+    <script src="/Src/three.min.js"></script>
+    <script src="/Src/GLTFLoader.js"></script>
+    <script src="/Src/OrbitControls.js"></script>
+   
+   
+    <header>
+
+        <nav>
+          
+          <div class="logo">
+            <!-- <img src="/img/ww.jpg" width="50px" height="50px" style="border-radius: 50px;" alt=""> -->
+           <a href="/index.htm"><img src="/Public/D-removebg-preview.png"  width="50px" height="50px" alt=""></a> </div>
+            <ul>
+                <li><a href="/index.htm">Home</a></li>
+                <li><a href="/Q2.html">Blog</a></li>
+                <li><a href="/About.html">About me</a></li>
+                <li><a href="/Contact.html">Contact</a></li>
+          </ul>
+        </nav>
+        
+    
+        <div class="text">
+           <h1> Use Mouse to change the View of Car</h1>
+            <p>this is still under constrcution</p>
+            <p>This will be done soon</p>
+            <span id="minitxt">This website is using javascript library called three js</span>
+        </div>
+    
+
+<div class="form">
+    <form>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Email address</label>
+          <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputPassword1" class="form-label">Password</label>
+          <input type="password" class="form-control" id="exampleInputPassword1">
+        </div>
+        <div class="mb-3 form-check">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1">
+          <label class="form-check-label" for="exampleCheck1">Check me out</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+</div>
+        
+        
+        </header>
+
+        <footer>
+            
+            <a href="https://instagram.com/danishkhan.co.in">
+              
+     &copy; &nbsp;Danish Khan</footer>
+            </a>
+                
+   <script>
+
+        function init() {
+
+
+            // setup scene 
+             
+            let colorr = 0xf2f2f2;
+
+            const scene = new THREE.Scene();
+            scene.background = new THREE.Color(colorr);
+            const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 5000);
+
+
+            let width = window.innerWidth;
+            let height = window.innerHeight;
+
+            // Camera Positions
+            camera.rotation.y = 45 / 180 * Math.PI;
+            // camera.rotation.y = 45;
+            camera.position.x = 800;
+            camera.position.y = 100;
+            camera.position.z = 4000;
+
+
+          
+
+           
+        
+
+  
+
+
+            hlight = new THREE.AmbientLight(0x404040, 100);
+            scene.add(hlight)
+
+
+            //    directional light with Cast Shadow
+
+            directionalLight = new THREE.DirectionalLight(0xFF3A20, 200);
+            directionalLight.position.set(0, 1, 0);
+            directionalLight.castShadow = true;
+            scene.add(directionalLight);
+
+
+            // end 
+
+            // // 4 light 
+
+            // light = new THREE.PointLight(0xc4c4c4, 10);
+            // light.position.set(0, 300, 500);
+            // scene.add(light);
+
+            // light2 = new THREE.PointLight(0xc4c4c4, 10);
+            // light2.position.set(500, 100, 0);
+            // scene.add(light2);
+
+            light3 = new THREE.PointLight(0xc4c4c4, 10);
+            light3.position.set(0, 100, -500);
+            scene.add(light3);
+
+            light4 = new THREE.PointLight(0xc4c4c4, 10);
+            light4.position.set(-500, 300, 0);
+            scene.add(light4);
+
+            // light
+
+
+            const renderer = new THREE.WebGLRenderer({ antialias: true });
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.domElement);
+            
+             // orbit controls
+           
+            const controls = new THREE.OrbitControls(camera, renderer.domElement);
+            camera.rotation.y = 45 / 180 * Math.PI;
+
+            camera.position.set(800, 200, 1000);
+            controls.update();
+
+
+
+            let loader = new THREE.GLTFLoader();
+            loader.load('scene.gltf', function (gltf) {
+                car = gltf.scene.children[0];
+                car.scale.set(0.5, 0.5, 0.5);
+
+                scene.add(gltf.scene);
+                animate();
+            });
+
+
+
+//             starGeo = new THREE.Geometry();
+// for(let i=0;i<6000;i++){
+// star = new THREE.Vector3(
+// Math.random() * 600 -300,
+// Math.random() * 600 -300,
+// Math.random() * 600 -300);
+
+// starGeo.vertices.push(star);
+
+// }
+
+// let sprite = new THREE.TextureLoader().load('Public/star.png');
+// let starMaterial = new THREE.PointsMaterial({color:0xaaaaaa,
+// size: 0.7,
+// map: sprite});
+
+// stars = new THREE.Points(starGeo, starMaterial);
+// scene.add(stars);
+
+
+
+
+
+            function animate() {
+
+                renderer.render(scene, camera);
+                requestAnimationFrame(animate);
+            }
+
+        }
+        init();
+
+
+
+    </script>
+</body>
+
+</html>
